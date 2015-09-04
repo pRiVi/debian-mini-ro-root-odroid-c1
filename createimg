@@ -60,6 +60,8 @@ rootfs_dir=$5
 uboot_bin_dir=$6
 ramfs_file=$7
 
+umount $rootfs_dir/* 2>/dev/null; exit 0
+
 # Calculate desired image size in bytes
 img_size=$(( $total_mb*1024*1024 ))
 
