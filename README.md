@@ -14,7 +14,7 @@ Script to build a minimal Debian read-only root sd card image.  If you are looki
 On a x86 based Ubuntu system, make sure the following packages are installed:
 ```
 sudo apt-get install build-essential wget git lzop u-boot-tools binfmt-support \
-                     qemu qemu-user-static debootstrap parted
+                     qemu qemu-user-static debootstrap parted dosfstools
 ```
 
 You must have the kernel module binfmt_misc loadable.
