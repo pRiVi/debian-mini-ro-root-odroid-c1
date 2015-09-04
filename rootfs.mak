@@ -28,7 +28,7 @@ $(ROOTFS_DIR).base:
 	mkdir -p $@.tmp
 	debootstrap --foreign --no-check-gpg --include=ca-certificates,ssh,vim,locales,ntpdate,usbmount,initramfs-tools --arch=$(DIST_ARCH) $(DIST) $@.tmp $(DIST_URL)
 	cp `which qemu-arm-static` $@.tmp/usr/bin
-	chroot $@.tmp /bin/bash -c "/debootstrap/debootstrap --second-stage"
+	chroot $@.tmp /bin/bash -c "/debootstrap/debootstrap --second-stage"; exit 0
 	rm $@.tmp/etc/hostname
 	rm $@.tmp/etc/ssh/ssh_host_*
 	ln -s /proc/mounts $@.tmp/etc/mtab
