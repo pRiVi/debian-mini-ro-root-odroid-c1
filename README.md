@@ -17,6 +17,8 @@ sudo apt-get install build-essential wget git lzop u-boot-tools binfmt-support \
                      qemu qemu-user-static debootstrap parted
 ```
 
+You must have the kernel module binfmt_misc available.
+
 If you are running 64 bit Ubuntu, you might need to run the following commands to be able to launch the 32 bit toolchain:
 ```
 sudo dpkg --add-architecture i386
