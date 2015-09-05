@@ -1,0 +1,15 @@
+--- etc/initramfs-tools/initramfs.conf.org	2015-09-05 22:51:01.858820595 +0200
++++ etc/initramfs-tools/initramfs.conf	2015-09-05 22:51:12.674820595 +0200
+@@ -15,11 +15,11 @@
+ # netboot - Add the base modules, network modules, but skip block devices.
+ #
+ # list - Only include modules from the 'additional modules' list
+ #
+ 
+-MODULES=most
++MODULES=netboot
+ 
+ #
+ # BUSYBOX: [ y | n ]
+ #
+ # Use busybox if available.
