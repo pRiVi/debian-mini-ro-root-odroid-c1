@@ -1,0 +1,14 @@
+--- lib/systemd/system/ssh.service.org	2015-09-05 13:03:32.114820595 +0200
++++ lib/systemd/system/ssh.service	2015-09-05 13:04:07.810820595 +0200
+@@ -3,10 +3,11 @@
+ After=network.target auditd.service
+ ConditionPathExists=!/etc/ssh/sshd_not_to_be_run
+ 
+ [Service]
+ EnvironmentFile=-/etc/default/ssh
++ExecStartPre=/etc/createHostKey.sh
+ ExecStart=/usr/sbin/sshd -D $SSHD_OPTS
+ ExecReload=/bin/kill -HUP $MAINPID
+ KillMode=process
+ Restart=on-failure
+ 
