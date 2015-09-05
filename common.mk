@@ -3,7 +3,7 @@ DIST_URL := http://ftp.de.debian.org/debian/
 DIST_ARCH := armhf
 
 BOOT_MB := 32
-ROOT_MB := 768
+ROOT_MB := 2000
 
 BOOT_DIR := boot
 MODS_DIR := mods
