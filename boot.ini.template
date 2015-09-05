@@ -3,7 +3,8 @@ ODROIDC-UBOOT-CONFIG
 # Possible screen resolutions
 # Uncomment only a single Line! The line with setenv written.
 # At least one mode must be selected.
- 
+
+fbcon=map:22
 # setenv m "vga"          # VGA 640x480
 # setenv m "480p"         # 480p 720x480
 # setenv m "576p"         # 576p 720x576

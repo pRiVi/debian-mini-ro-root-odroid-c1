@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+apt-get update
+apt-get install fbset tcpdump
+echo spicc >>/etc/modules
+echo fbtft_device name=odroidc_tft32 rotate=270 gpios=reset:116,dc:115 speed=32000000 cs=0 >>/etc/modules
+echo con2fbmap 1 2 >>/etc/rc.local
+
