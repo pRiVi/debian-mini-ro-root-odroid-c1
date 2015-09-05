@@ -1,5 +1,5 @@
---- lib/systemd/system/ssh.service.org	2015-09-05 13:03:32.114820595 +0200
-+++ lib/systemd/system/ssh.service	2015-09-05 13:04:07.810820595 +0200
+--- etc/systemd/system/sshd.service.org	2015-09-05 13:46:43.218820595 +0200
++++ etc/systemd/system/sshd.service	2015-09-05 13:46:54.302820595 +0200
 @@ -3,10 +3,11 @@
  After=network.target auditd.service
  ConditionPathExists=!/etc/ssh/sshd_not_to_be_run
