@@ -1,5 +1,5 @@
 DIST := stable
-DIST_URL := http://http.debian.net/debian/
+DIST_URL := http://ftp.de.debian.org/debian/
 DIST_ARCH := armhf
 
 BOOT_MB := 32
