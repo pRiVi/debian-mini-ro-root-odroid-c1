@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+echo '#!/usr/bin/env bash' >>/etc/createHostKey.sh
+echo >>/etc/createHostKey.sh
+echo 'if [ ! -e /etc/ssh/ssh_host_rsa_key ]; then' >>/etc/createHostKey.sh
+echo '    echo "Generating SSH host keys..." || true' >>/etc/createHostKey.sh
+echo '    mount -n -o remount,rw / || echo "Remounting / rw failed"' >>/etc/createHostKey.sh
+echo '    ssh-keygen -q -t rsa -N "" -f /etc/ssh/ssh_host_rsa_key' >>/etc/createHostKey.sh
+echo '    ssh-keygen -q -t dsa -N "" -f /etc/ssh/ssh_host_dsa_key' >>/etc/createHostKey.sh
+echo '    ssh-keygen -q -t ecdsa -N "" -f /etc/ssh/ssh_host_ecdsa_key' >>/etc/createHostKey.sh
+echo '    sync || echo "sync failed"' >>/etc/createHostKey.sh
+echo '    mount -n -o remount,ro / || echo "Remounting / ro failed"' >>/etc/createHostKey.sh
+echo 'fi' >>/etc/createHostKey.sh
+chmod +x /etc/createHostKey.sh
+
