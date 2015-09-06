@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+apt-get update
+apt-get install -y --force-yes libdevice-serialport-perl libpoe-perl cpanminus fbset git make libpng-dev
+cpanm install Imager::Font
+cpanm install Imager::File::PNG
+cpanm install Graphics::Framebuffer
+cpanm install Linux::Input
+cpanm install Imager::File::PNG
+
