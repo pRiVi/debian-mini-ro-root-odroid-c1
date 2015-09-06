@@ -39,8 +39,8 @@ $(BOOT_DIR): $(UIMAGE_BIN) $(MESON8B_ODROIDC_DTB_BIN)
 	touch $@
 
 $(UIMAGE_BIN): $(LINUX_TC_DIR) $(LINUX_SRC)
-	$(MAKE) -C $(LINUX_SRC) odroidc_defconfig
-	$(MAKE) -C $(LINUX_SRC) uImage
+	$(MAKE) -j 4 -C $(LINUX_SRC) odroidc_defconfig
+	$(MAKE) -j 4 -C $(LINUX_SRC) uImage
 	$(MAKE) -C $(LINUX_SRC) dtbs
 	touch $@
 
@@ -48,7 +48,7 @@ $(MODS_DIR): $(UIMAGE_BIN)
 	if test -d "$@.tmp"; then rm -rf "$@.tmp" ; fi
 	if test -d "$@"; then rm -rf "$@" ; fi
 	mkdir -p "$@.tmp"
-	$(MAKE) -C $(LINUX_SRC) modules
+	$(MAKE) -j 4 -C $(LINUX_SRC) modules
 	$(MAKE) -C $(LINUX_SRC) INSTALL_MOD_PATH=$(abspath $(MODS_DIR).tmp) modules_install
 	mv "$@.tmp" $@
 	touch $@
