@@ -7,4 +7,5 @@ cpanm install Imager::File::PNG
 cpanm install Graphics::Framebuffer
 cpanm install Linux::Input
 cpanm install Imager::File::PNG
+cpanm install Imager::Font::F2
 
