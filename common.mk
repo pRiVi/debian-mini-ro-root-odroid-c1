@@ -3,7 +3,7 @@ DIST_URL := http://http.debian.net/debian/
 DIST_ARCH := armhf
 
 BOOT_MB := 32
-ROOT_MB := 768
+ROOT_MB := 900
 
 BOOT_DIR := boot
 MODS_DIR := mods
@@ -11,10 +11,10 @@ ROOTFS_DIR := rootfs
 RAMDISK_FILE := uInitrd
 IMAGE_FILE := sdcard.img
 
-UBOOT_TOOLCHAIN := gcc-linaro-arm-none-eabi-4.8-2014.04_linux.tar.xz
-UBOOT_TOOLCHAIN_URL := http://releases.linaro.org/14.04/components/toolchain/binaries/$(UBOOT_TOOLCHAIN)
+UBOOT_TOOLCHAIN := gcc-linaro-arm-linux-gnueabihf-4.9-2014.09_linux.tar.xz
+UBOOT_TOOLCHAIN_URL := http://releases.linaro.org/14.09/components/toolchain/binaries/$(UBOOT_TOOLCHAIN)
 UBOOT_TC_DIR := uboot_tc
-UBOOT_TC_PATH := $(UBOOT_TC_DIR)/gcc-linaro-arm-none-eabi-4.8-2014.04_linux/bin
+UBOOT_TC_PATH := $(UBOOT_TC_DIR)/gcc-linaro-arm-linux-gnueabihf-4.9-2014.09_linux/bin
 UBOOT_REPO := https://github.com/hardkernel/u-boot.git
 UBOOT_BRANCH := odroidc-v2011.03
 UBOOT_SRC := u-boot
