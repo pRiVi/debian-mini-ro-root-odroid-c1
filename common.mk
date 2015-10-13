@@ -24,7 +24,7 @@ LINUX_TOOLCHAIN_URL := http://www.priv.de/odroid/$(LINUX_TOOLCHAIN)
 LINUX_TC_DIR := linux_tc
 LINUX_TC_PATH := $(LINUX_TC_DIR)/bin
 LINUX_TC_PREFIX := arm-linux-gnueabihf-
-LINUX_REPO := https://git.priv.de/odroid/kernel.git
+LINUX_REPO := https://git.priv.de/odroid/kernel.git linux
 LINUX_BRANCH := odroidc-3.10.y-lcdfix
 LINUX_SRC := linux
 
