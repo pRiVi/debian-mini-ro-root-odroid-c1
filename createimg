@@ -60,7 +60,9 @@ rootfs_dir=$5
 uboot_bin_dir=$6
 ramfs_file=$7
 
+if [[ "$total_mb" != "$boot_mb" ]]; then
 bash -c "umount $rootfs_dir/* 2>/dev/null; exit 0"
+fi
 
 # Calculate desired image size in bytes
 img_size=$(( $total_mb*1024*1024 ))
@@ -100,10 +102,11 @@ second_part_start_sector=$first_part_end_sector
 second_part_end_sector=$(($cylinders*$sectors_per_cylinder))
 
 # Partition the disk
-sfdisk --unit S --in-order --no-reread $outfile  <<EOF
-$first_part_start_sector,$(($first_part_end_sector-$first_part_start_sector)),0x0C,*
-$second_part_start_sector,$(($second_part_end_sector-$second_part_start_sector)),L
-EOF
+
+(
+echo "$first_part_start_sector,$(($first_part_end_sector-$first_part_start_sector)),0x0C,*" ;
+if [[ "$total_mb" != "$boot_mb" ]]; then echo "$second_part_start_sector,$(($second_part_end_sector-$second_part_start_sector)),"; fi) | \
+sfdisk --unit S --in-order --no-reread $outfile
 
 if mountpoint -q mnt; then
 	device=`df -h mnt | grep "^/" | cut -f1 -d' '`
@@ -125,6 +128,7 @@ mkfs.vfat -F 32 $lodev
 boot_uuid=`blkid $lodev | sed -n 's/.*UUID=\"\([^\"]*\)\".*/\1/p'`
 losetup_delete_retry $lodev
 
+if [[ "$total_mb" != "$boot_mb" ]]; then
 # Mount rootfs partition, format it and copy files
 lodev=$(losetup_partition $outfile 2)
 partprobe $lodev
@@ -144,6 +148,9 @@ if [ -x "./createimg-rootfs-post" ] ; then
 fi
 umount_retry mnt
 losetup_delete_retry $lodev
+else
+mkdir -p mnt
+fi
 
 # Wait a bit, weird race condition (see above)
 sleep 2
@@ -154,11 +161,19 @@ partprobe $lodev
 echo "Mounting boot partition on $lodev..."
 mount -t vfat $lodev mnt/
 sed -e "s/\${BOOT_UUID}/$boot_uuid/" -e "s/\${ROOT_UUID}/$root_uuid/" boot.ini.template > mnt/boot.ini
+if [[ "$boot_dir" != "" ]]; then
 cp -rp $boot_dir/* mnt/
+fi
+if [[ "$ramfs_file" != "" ]]; then
 cp -p $ramfs_file mnt/
+fi
 if [ -x "./createimg-bootfs-post" ] ; then
 	./createimg-bootfs-post mnt/
 fi
 umount_retry mnt
 losetup_delete_retry $lodev
+
+if [[ "$total_mb" != "$boot_mb" ]]; then
+rmdir mnt;
+fi
 

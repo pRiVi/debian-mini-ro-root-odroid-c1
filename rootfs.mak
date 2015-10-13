@@ -61,6 +61,9 @@ $(RAMDISK_FILE): $(ROOTFS_DIR)
 $(IMAGE_FILE): $(ROOTFS_DIR) $(RAMDISK_FILE)
 	if test -f "$@.tmp"; then rm "$@.tmp" ; fi
 	./createimg $@.tmp $(BOOT_MB) $(ROOT_MB) $(BOOT_DIR) $(ROOTFS_DIR) $(UBOOT_BIN_DIR) $(RAMDISK_FILE)
+	./createimg $@.nfs.tmp 1 1 boot.nfs/ "" $(UBOOT_BIN_DIR) ""
 	mv $@.tmp $@
+	mv $@.nfs.tmp $@.nfs
 	touch $@
+	touch $@.nfs
 
