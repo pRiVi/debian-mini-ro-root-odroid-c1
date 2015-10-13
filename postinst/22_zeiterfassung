@@ -9,6 +9,6 @@ cpanm install Linux::Input
 cpanm install Imager::File::PNG
 cpanm install Imager::Font::FT2
 
-echo "modprobe spicc" >>/etc/rc.local
-echo "modprobe fbtft_device name=odroidc_tft32 rotate=270 gpios=reset:116,dc:115 speed=32000000 cs=0" >>/etc/rc.local
+echo "/sbin/modprobe spicc" >>/etc/rc.local
+echo "/sbin/modprobe fbtft_device name=odroidc_tft32 rotate=270 gpios=reset:116,dc:115 speed=32000000 cs=0" >>/etc/rc.local
 echo '(sleep 2; /bin/con2fbmap 1 2) &' >>/etc/rc.local
